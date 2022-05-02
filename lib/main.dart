@@ -1,3 +1,4 @@
+import 'package:concord/screens/nav_bar.dart';
 import 'package:concord/screens/login_screen.dart';
 import 'package:concord/utils/theme.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +21,10 @@ class MyApp extends StatelessWidget {
       theme: MyThemes.lightTheme,
       darkTheme: MyThemes.darkTheme,
       title: 'Concord',
-      home: LoginScreen(),
+      home: NavBar(),
     );
   }
 }
+
+
 
