@@ -1,4 +1,5 @@
 import 'package:concord/screens/explore_screen.dart';
+import 'package:concord/screens/music_screen.dart';
 import 'package:concord/utils/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class _NavBarState extends State<NavBar> {
    setState(() {
      _selectedIndex = index;
    });
-   pageController.animateToPage(index,duration: Duration(milliseconds: 100),curve: Curves.easeIn);
+   pageController.animateToPage(index,duration: Duration(milliseconds: 300),curve: Curves.easeIn);
   }
 
   @override
@@ -26,8 +27,8 @@ class _NavBarState extends State<NavBar> {
       body: PageView(
         physics: NeverScrollableScrollPhysics(),
         children: [
+          MusicScreen(),
           ExploreScreen(),
-          Container(color: Colors.yellow),
           Container(color: Colors.blue),
           Container(color: Colors.green),
         ],
@@ -50,3 +51,5 @@ class _NavBarState extends State<NavBar> {
     );
   }
 }
+
+

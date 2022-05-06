@@ -1,3 +1,5 @@
+import 'package:concord/auth/auth.dart';
+import 'package:concord/screens/nav_bar.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -60,8 +62,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius: BorderRadius.all(Radius.circular(34)),
                   ),
               ),
-              onPressed: () {
-                
+              onPressed: ()
+              {
+                signup(context);
               },
               child: Row(
                 children: [
@@ -88,43 +91,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 28,
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.white,
-                padding: const EdgeInsets.symmetric(vertical: 12),
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(34)),
-                ),
-              ),
-              onPressed: () {},
-              child: Row(
-                children: [
-                  const SizedBox(
-                    width: 17,
-                  ),
-                  Image.asset(
-                    'assets/images/icon_apple.png',
-                    height: 34,
-                    width: 34,
-                  ),
-                  const SizedBox(
-                    width: 32,
-                  ),
-                  const Text(
-                    'Continue with Apple',
-                    style: TextStyle(
-                      color: Colors.black54,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
-            ),
             //continue with apple
           ],
         ),
@@ -132,3 +98,4 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+
