@@ -1,6 +1,5 @@
 import 'package:concord/screens/explore_screen.dart';
 import 'package:concord/screens/music_screen.dart';
-import 'package:concord/screens/search_screen.dart';
 import 'package:concord/utils/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +29,7 @@ class _NavBarState extends State<NavBar> {
         children: [
           MusicScreen(),
           ExploreScreen(),
-          SearchScreen(),
+          Container(color: Colors.blue),
           Container(color: Colors.green),
         ],
         controller: pageController,
