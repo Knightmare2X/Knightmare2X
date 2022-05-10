@@ -2,6 +2,7 @@ import 'package:concord/auth/auth.dart';
 import 'package:concord/screens/explore_screen.dart';
 import 'package:concord/screens/nav_bar.dart';
 import 'package:concord/screens/login_screen.dart';
+import 'package:concord/screens/search_screen.dart';
 import 'package:concord/utils/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class _MyAppState extends State<MyApp> {
     String? token = await getToken();
     if(token!=null){
       setState(() {
-        currentPage = NavBar();
+        currentPage = SearchScreen();
       });
     }
   }
