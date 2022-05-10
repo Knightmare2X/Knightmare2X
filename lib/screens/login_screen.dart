@@ -1,5 +1,4 @@
 import 'package:concord/auth/auth.dart';
-import 'package:concord/screens/nav_bar.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -24,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            stops: [0.1, 0.5, 0.99],
+            stops: const [0.1, 0.5, 0.99],
           ),
         ),
         padding: const EdgeInsets.symmetric(horizontal: 34),
@@ -35,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             //png image
             FittedBox(
-              child: Image.asset('assets/images/icon_white.png',
+              child: Image.asset('assets/icons/icon_white.png',
                   height: 198,
                   width: 198,
                   fit: BoxFit.contain),
@@ -72,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: 17,
                   ),
                   Image.asset(
-                    'assets/images/icon_google.png',
+                    'assets/icons/icon_google.png',
                     height: 34,
                     width: 34,
                   ),

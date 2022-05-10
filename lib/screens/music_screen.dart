@@ -22,30 +22,32 @@ class _MusicScreenState extends State<MusicScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         // implement the massonry layout
-        body: MasonryGridView.count(
-          itemCount: _items.length,
-          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
-          // the number of columns
-          crossAxisCount: 2,
-          // vertical gap between two items
-          mainAxisSpacing: 4,
-          // horizontal gap between two items
-          crossAxisSpacing: 4,
-          itemBuilder: (context, index) {
-            // display each item with a card
-            return Card(
-              // Give each item a random background color
-              color: Color.fromARGB(Random().nextInt(256), Random().nextInt(256),
-                  Random().nextInt(256), Random().nextInt(256)),
-              key: ValueKey(_items[index]['id']),
-              child: SizedBox(
-                height: _items[index]['height'],
-                child: Center(
-                  child: Text(_items[index]['title']),
-                ),
+        body: SafeArea(
+      child: MasonryGridView.count(
+        itemCount: _items.length,
+        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+        // the number of columns
+        crossAxisCount: 2,
+        // vertical gap between two items
+        mainAxisSpacing: 4,
+        // horizontal gap between two items
+        crossAxisSpacing: 4,
+        itemBuilder: (context, index) {
+          // display each item with a card
+          return Card(
+            // Give each item a random background color
+            color: Color.fromARGB(Random().nextInt(256), Random().nextInt(256),
+                Random().nextInt(256), Random().nextInt(256)),
+            key: ValueKey(_items[index]['id']),
+            child: SizedBox(
+              height: _items[index]['height'],
+              child: Center(
+                child: Text(_items[index]['title']),
               ),
-            );
-          },
-        ));
+            ),
+          );
+        },
+      ),
+    ));
   }
 }
