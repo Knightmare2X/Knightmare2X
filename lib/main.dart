@@ -23,7 +23,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Widget currentPage = const LoginScreen();
+  Widget currentPage = LoginScreen();
 
   @override
   void initState() {
