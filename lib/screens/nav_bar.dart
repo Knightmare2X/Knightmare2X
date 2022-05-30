@@ -11,7 +11,7 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
   PageController pageController = PageController();
 
   void onTapped(int index) {
@@ -28,19 +28,23 @@ class _NavBarState extends State<NavBar> {
       body: PageView(
         physics: NeverScrollableScrollPhysics(),
         children: [
-          const MusicScreen(),
           const ExploreScreen(),
+          const MusicScreen(),
           const SearchScreen(),
+          Container(color: Colors.blue,),
           Container(color: Colors.green),
         ],
         controller: pageController,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.music_note), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.image), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.image), label: 'explore'),
+          BottomNavigationBarItem(icon: Icon(Icons.music_note), label: 'music'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'search'),
+          BottomNavigationBarItem(icon: Icon(Icons.notifications), label: 'notifications'),
+          BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: 'profile'),
         ],
         currentIndex: _selectedIndex,
         unselectedItemColor: Colors.grey,
@@ -51,6 +55,9 @@ class _NavBarState extends State<NavBar> {
       ),
     );
   }
+
+
+
 }
 
 

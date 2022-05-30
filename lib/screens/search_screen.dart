@@ -24,27 +24,19 @@ class _SearchScreenState extends State<SearchScreen>{
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-
-              //search text
-              const SizedBox(
-                height: 200,
-              ),
-              const Text(
-                'Search',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 40,
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 3,
+              width: MediaQuery.of(context).size.width,
+              child: const Center(
+                child: Text(
+                  'Search',
+                  style: TextStyle(
+                    fontSize: 52,
+                    fontFamily: 'Josefin' ,
+                  ),
                 ),
               ),
-
-
-
-
-              // search button
-              const SizedBox(
-                height: 80,
-              ),
+            ),
 
           ElevatedButton(
             style: ElevatedButton.styleFrom(
