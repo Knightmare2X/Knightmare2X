@@ -6,7 +6,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../screens/nav_bar.dart';
 
-
+final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 final FirebaseAuth auth = FirebaseAuth.instance;
 final storage = new FlutterSecureStorage();
 
@@ -14,27 +14,27 @@ final storage = new FlutterSecureStorage();
 
 Future<void> signup(BuildContext context) async {
   final GoogleSignIn googleSignIn = GoogleSignIn();
-  final GoogleSignInAccount? googleSignInAccount = await googleSignIn
-      .signIn();
+  final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
   final DateTime dateTime = DateTime.now();
 
   saveUserInfoToFirestore() async{
-    final GoogleSignInAccount? gCurrentUser = googleSignIn.currentUser;
-    final usersReference = FirebaseFirestore.instance.collection("Users");
-    String? uid = auth.currentUser?.uid.toString();
-    DocumentSnapshot documentSnapshot = await usersReference.doc(uid).get();
-    usersReference.doc(uid).set({
-      "username": gCurrentUser?.displayName,
-      "email": gCurrentUser?.email,
-      "photoURL": gCurrentUser?.photoUrl,
-      "creationDate": dateTime,
 
-    });
-    documentSnapshot = await usersReference.doc(uid).get();
+    GoogleSignInAccount? gCurrentUser = googleSignIn.currentUser;
+    User? user = auth.currentUser;
+    var uid = user?.uid;
+
+    if (googleSignInAccount != null) {
+      await _firestore.collection("Users").doc(uid).set({
+        "username": gCurrentUser?.displayName,
+        "email": gCurrentUser?.email,
+        "photoURL": gCurrentUser?.photoUrl,
+        "creationDate": dateTime,
+      });
+    }
   }
 
   if (googleSignInAccount != null) {
-    await saveUserInfoToFirestore();
+
     final GoogleSignInAuthentication googleSignInAuthentication =
     await googleSignInAccount.authentication;
     final AuthCredential authCredential = GoogleAuthProvider.credential(
@@ -46,6 +46,7 @@ Future<void> signup(BuildContext context) async {
     storeTokenAndData(result);
     User? user = result.user;
 
+    await saveUserInfoToFirestore();
 
     if (result != null) {
       Navigator.pushReplacement(
